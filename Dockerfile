@@ -6,6 +6,8 @@ USER root
 
 RUN az aks install-cli
 
+RUN adduser --disabled-password --no-create-home --uid=1983 spacelift
+
 # ADD https://github.com/Azure/kubelogin/releases/download/v0.1.3/kubelogin-linux-${TARGETARCH}.zip /tmp/kubelogin/kubelogin.zip
 
 # RUN unzip /tmp/kubelogin/kubelogin.zip -d /tmp/kubelogin && \
