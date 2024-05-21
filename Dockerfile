@@ -2,6 +2,8 @@ FROM public.ecr.aws/spacelift/runner-terraform:latest
 
 ARG TARGETARCH
 
+USER root
+
 ADD https://github.com/Azure/kubelogin/releases/download/v0.1.3/kubelogin-linux-${TARGETARCH}.zip /tmp/kubelogin/kubelogin.zip
 
 RUN apk add unzip && \
@@ -10,3 +12,5 @@ RUN apk add unzip && \
     chmod 755 /bin/kubelogin && \
     rm -rf /tmp/kubelogin && \
     kubelogin --version
+
+USER spacelift
